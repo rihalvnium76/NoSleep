@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="NoSleep:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/NoSleep_jar</output-path>
+    <root id="archive" name="NoSleep.jar">
+      <element id="module-output" name="NoSleep" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/java/dev/jna/jna/5.18.1/jna-5.18.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/java/dev/jna/jna-platform/5.18.1/jna-platform-5.18.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
