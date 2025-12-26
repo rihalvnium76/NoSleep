@@ -20,7 +20,7 @@ public class NoSleepNative implements Runnable {
 
   public static NoSleepNative create(String[] args, AtomicBoolean running) {
     if (
-      (args.length == 0 && !OSUtils.isWindows()) ||
+      !OSUtils.isWindows() ||
       (args.length >= 1 && !"api".equals(args[0])) ||
       (args.length >= 2 && !"disp".equals(args[1]))
     ) {
