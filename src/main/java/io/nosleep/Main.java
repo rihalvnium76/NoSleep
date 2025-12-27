@@ -12,8 +12,11 @@ public class Main {
   public static void main(String[] args) {
     AtomicBoolean running = buildRunning();
     Runnable preventer = buildPreventer(args, running);
-    runPreventer(preventer);
-    printHelp(preventer, args);
+    if (preventer != null) {
+      runPreventer(preventer);
+    } else {
+      printHelp(args);
+    }
   }
 
   private static AtomicBoolean buildRunning() {
@@ -42,21 +45,17 @@ public class Main {
   }
 
   private static void runPreventer(Runnable preventer) {
-    if (preventer != null) {
-      System.out.printf("[I] %s is running\n", preventer.getClass().getSimpleName());
-      preventer.run();
-    }
+    System.out.printf("[I] %s is running\n", preventer.getClass().getSimpleName());
+    preventer.run();
   }
 
-  private static void printHelp(Runnable preventer, String[] args) {
-    if (preventer == null) {
-      System.err.printf("[E] Unsupported sleep preventer: %s\n", Arrays.toString(args));
-      System.out.println(
-        "[I] Available sleep preventers:\n"
+  private static void printHelp(String[] args) {
+    System.err.printf("[E] Unsupported sleep preventer: %s\n", Arrays.toString(args));
+    System.out.println(
+      "[I] Available sleep preventers:\n"
         + "  - key\n"
         + "  - api\n"
         + "  - api disp"
-      );
-    }
+    );
   }
 }

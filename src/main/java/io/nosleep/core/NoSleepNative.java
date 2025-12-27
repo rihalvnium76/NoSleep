@@ -40,17 +40,25 @@ public class NoSleepNative implements Runnable {
 
   @Override
   public void run() {
-    try {
-      while (running.get()) {
-        // enable
-        Kernel32.INSTANCE.SetThreadExecutionState(executionState);
+    registerRestore();
+
+    while (running.get()) {
+      // enable
+      Kernel32.INSTANCE.SetThreadExecutionState(executionState);
+      try {
         Thread.sleep(random.nextInt(6000, 12000));
+      } catch (InterruptedException e) {
+        running.set(false);
+        Thread.currentThread().interrupt();
       }
-    } catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-    } finally {
-      // restore
-      Kernel32.INSTANCE.SetThreadExecutionState(ES_CONTINUOUS);
     }
+  }
+
+  private static void registerRestore() {
+    Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+      // restore
+      System.out.println("[I] Restoring execution state");
+      Kernel32.INSTANCE.SetThreadExecutionState(ES_CONTINUOUS);
+    }));
   }
 }
