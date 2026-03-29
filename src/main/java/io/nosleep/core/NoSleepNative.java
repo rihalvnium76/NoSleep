@@ -46,7 +46,7 @@ public class NoSleepNative implements Runnable {
       // enable
       Kernel32.INSTANCE.SetThreadExecutionState(executionState);
       try {
-        Thread.sleep(random.nextInt(6000, 12000));
+        Thread.sleep(random.nextInt(10000, 20000));
       } catch (InterruptedException e) {
         running.set(false);
         Thread.currentThread().interrupt();
