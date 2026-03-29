@@ -40,11 +40,11 @@ NoSleep operates in two modes: simulated key presses and system calls.
 
 ### Simulated Key Press Mode
 
-This mode simulates user input by pressing the Scroll Lock key 1–3 times every 6–12 seconds, with a 100–250 ms delay between presses. This prevents the system from detecting idle time.
+This mode simulates user input by pressing the Scroll Lock key 1–3 times every 10-20 seconds, with a 100–250 ms delay between presses. This prevents the system from detecting idle time.
 
 ### System Call Mode (Windows Only)
 
-This mode calls the Windows API function [`SetThreadExecutionState()`](https://learn.microsoft.com/zh-cn/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate) every 6–12 seconds to reset the system’s idle and display timers. 
+This mode calls the Windows API function [`SetThreadExecutionState()`](https://learn.microsoft.com/zh-cn/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate) every 10-20 seconds to reset the system’s idle and display timers. 
 
 The `disp` option adds the `ES_DISPLAY_REQUIRED` flag to keep the screen on.
 

@@ -50,7 +50,7 @@ public class NoSleepRobot implements Runnable {
         // disable;
         pressKey();
       }
-      robot.delay(random.nextInt(6000, 12000));
+      robot.delay(random.nextInt(10000, 20000));
     }
   }
 
